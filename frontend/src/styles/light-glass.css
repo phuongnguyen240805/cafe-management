@@ -1,0 +1,37 @@
+/* Warm daylight surfaces with a readable, progressively enhanced glass layer. */
+:root{--bg-900:#f6f0e6;--bg-800:#ede2d1;--panel:#fffaf2;--panel-contrast:#38291e;--text-dark:#38291e;--text-muted:#786451;--brand-light:#694b32;--leaxie-accent:#795536;--leaxie-accent-strong:#624126;--leaxie-accent-muted:#8c7058}
+html{background:#f6f0e6}
+body{background:radial-gradient(ellipse at 8% 0%,#fffdf8 0,transparent 48%),radial-gradient(ellipse at 94% 35%,#e7d4b85c 0,transparent 48%),#f6f0e6!important;color:#38291e!important}
+#root{--surface:#fffaf2;--ink:#38291e;--muted:#786451;--line:#dfd1bf;--coffee:#735035;--gold:#8c663f;min-height:100dvh}
+#root .navbar{background:#fffaf2ed!important;border-bottom:1px solid #ffffff!important;box-shadow:0 6px 30px #775b3510;color:#38291e!important}
+#root .nav-brand a{color:#624126!important}
+#root .nav-links a{color:#72563e!important}
+#root .nav-links a:hover,#root .nav-links a[aria-current=page]{color:#392719!important;border-bottom-color:#a88051}
+#root .user-info,#root .logout-btn{color:#624126!important}
+#root :is(.menu-container,.cart-container,.checkout-container,.track-order,.admin-dashboard,.staff-dashboard,.admin-section){color:#38291e!important}
+#root :is(.menu-container,.cart-container,.checkout-container,.track-order,.admin-dashboard,.staff-dashboard,.admin-section)>h1,
+#root :is(.menu-content,.cart-content,.checkout-content,.track-content)>h1,
+#root .dashboard-header h1,#root .admin-section>h2,#root .staff-dashboard>h2{color:#513720!important}
+#root :is(.menu-content,.cart-content,.checkout-content)>p{color:#786451!important}
+#root .coffee-hero{background:linear-gradient(125deg,#ffffffdf,#efe1ccbd);border:1px solid #fffaf8;box-shadow:0 20px 70px #8a673418,inset 0 1px 0 #fff}
+#root :is(.product-card,.cart-item,.cart-summary,.checkout-form,.order-card,.track-content,.staff-form,.staff-list,.stat-card,.product-form){background:#fffaf2ee!important;border:1px solid #fff!important;box-shadow:0 8px 32px #81623b12,inset 0 1px 0 #fff}
+#root .sidebar,#root .admin-filters{background:#eee2d1cf!important;border:1px solid #fff!important;color:#513720}
+#root .dashboard-header{border-bottom-color:#b89a6e40}
+#root .about-hero{background:linear-gradient(120deg,#fdf9f0,#ead7bb)!important;border:1px solid #fff;box-shadow:0 14px 48px #80603914}
+#root .dark-text .about-title,#root .about-title{color:#513720!important}
+#root .dark-text .about-sub,#root .about-sub,#root .mission-text{color:#70563f!important}
+#root .empty-cart,#root .empty-state,.menu-feedback{color:#70563f;background:#fffaf2a8;border-color:#c6ac89}
+.menu-tools p{color:#786451}.menu-skeleton{background:linear-gradient(110deg,#e9ddcd 20%,#faf5eb 40%,#e9ddcd 60%);background-size:200% 100%}
+#root .site-footer{color:#786451;border-top-color:#c8b49366}
+#root .site-footer strong,#root .site-footer a{color:#624126}
+#root .brule-card{border-color:#fff;box-shadow:0 24px 70px #80603920}
+#root :is(.product-card,.order-card,.stat-card){transition:box-shadow .25s ease,transform .25s ease}
+@supports(backdrop-filter:blur(12px)){
+  #root .navbar{background:#fffaf2b8!important;backdrop-filter:blur(22px) saturate(135%);-webkit-backdrop-filter:blur(22px) saturate(135%)}
+  #root :is(.coffee-hero,.cart-summary,.checkout-form,.track-content,.sidebar,.admin-filters){backdrop-filter:blur(16px) saturate(115%);-webkit-backdrop-filter:blur(16px) saturate(115%)}
+  #root :is(.cart-summary,.checkout-form,.track-content){background:#fffaf2c9!important}
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){#root .product-card:hover{transform:translateY(-4px);box-shadow:0 18px 42px #81623b22}#root .order-card:hover{box-shadow:0 12px 36px #81623b20}}
+@media(max-width:700px){#root .navbar{position:sticky;padding:12px 16px;gap:8px}#root .nav-brand{flex:0 0 100%}#root .nav-links{width:100%;gap:14px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding-bottom:3px}#root .nav-links a{flex-shrink:0;min-height:36px;display:inline-flex;align-items:center}#root .coffee-hero{padding:28px 22px}#root .coffee-art{min-height:260px}#root .product-grid{gap:16px}#root .product-card img{height:200px}#root .site-footer{padding-bottom:28px}#root .brule-card{width:100%;max-width:480px}#root .brule-right{padding:28px 22px!important}}
+@media(max-width:380px){#root .container{padding-inline:12px}#root .coffee-hero h1{font-size:38px}#root .coffee-primary{width:100%;justify-content:space-between;box-sizing:border-box}#root .product-card{padding:14px}}
+@media(prefers-reduced-motion:reduce){#root :is(.product-card,.order-card,.stat-card){transition:none}}
