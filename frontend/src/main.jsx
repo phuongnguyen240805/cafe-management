@@ -5,6 +5,7 @@ import './index.css'
 // Global theme variables
 import './styles/theme.css'
 import './styles/experience.css'
+import './styles/site.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

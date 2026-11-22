@@ -217,7 +217,7 @@ const Navbar = () => {
             <>
               <Link to="/menu">Menu</Link>
               <Link to="/about">About Us</Link>
-              <Link to="/cart" className="cart-link">
+              <Link to="/cart" className="cart-link" aria-label={`Shopping cart, ${cart.length} items`}>
                 <FaShoppingCart />
                 {cart.length > 0 && <span className="cart-count">{cart.length}</span>}
               </Link>
@@ -230,7 +230,7 @@ const Navbar = () => {
               {user.role === 'admin' && <Link to="/admin">Admin</Link>}
               {user.role === 'staff' && <Link to="/staff">Staff</Link>}
               <span className="user-info"><FaUser /> {user.name}</span>
-              <button onClick={handleLogout} className="logout-btn"><FaSignOutAlt /></button>
+              <button onClick={handleLogout} className="logout-btn" aria-label="Log out"><FaSignOutAlt /></button>
             </>
           ) : (
             <Link to="/login">Login</Link>

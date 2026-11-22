@@ -70,8 +70,9 @@ function App() {
             .btn-primary { padding: 8px 12px; background: linear-gradient(135deg,var(--accent-warm),var(--accent-warm-2)); border-radius:8px; border:none; color:var(--panel-contrast); cursor:pointer }
             .btn-danger { padding:8px 12px; background: rgba(255,107,107,0.12); border-radius:8px; border:0.5px solid rgba(255,107,107,0.18); color:#ff6b6b }
           `}</style>
+          <a className="skip-link" href="#main-content">Skip to content</a>
           <Navbar />
-          <div className="container">
+          <div className="container" id="main-content" tabIndex={-1}>
             <Suspense fallback={<Loading />}>
               <Routes>
               {/* Customer Routes */}
@@ -116,6 +117,7 @@ function App() {
             </Routes>
             </Suspense>
           </div>
+          <footer className="site-footer"><div><strong>Leaxie Cafe</strong>A little pause. A better cup.</div><div>Dine in · Pick up · Delivery<br /><a href="/menu">Explore menu</a> · <a href="/track">Track an order</a></div></footer>
           <Toaster position="top-right" />
         </Router>
       </CartProvider>
