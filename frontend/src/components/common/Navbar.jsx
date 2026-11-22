@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { CartContext } from '../../context/CartContext';
 import { FaShoppingCart, FaUser, FaSignOutAlt } from 'react-icons/fa';
@@ -215,25 +215,25 @@ const Navbar = () => {
           {/* Show Menu/Cart only to customers (unauthenticated users or users without admin/staff roles) */}
           {(!user || (user && !['admin', 'staff'].includes(user.role))) && (
             <>
-              <Link to="/menu">Menu</Link>
-              <Link to="/about">About Us</Link>
-              <Link to="/cart" className="cart-link" aria-label={`Shopping cart, ${cart.length} items`}>
+              <NavLink to="/menu">Menu</NavLink>
+              <NavLink to="/about">About Us</NavLink>
+              <NavLink to="/cart" className="cart-link" aria-label={`Shopping cart, ${cart.length} items`}>
                 <FaShoppingCart />
                 {cart.length > 0 && <span className="cart-count">{cart.length}</span>}
-              </Link>
-              <Link to="/track">Track Order</Link>
+              </NavLink>
+              <NavLink to="/track">Track Order</NavLink>
             </>
           )}
           
           {user ? (
             <>
-              {user.role === 'admin' && <Link to="/admin">Admin</Link>}
-              {user.role === 'staff' && <Link to="/staff">Staff</Link>}
+              {user.role === 'admin' && <NavLink to="/admin">Admin</NavLink>}
+              {user.role === 'staff' && <NavLink to="/staff">Staff</NavLink>}
               <span className="user-info"><FaUser /> {user.name}</span>
               <button onClick={handleLogout} className="logout-btn" aria-label="Log out"><FaSignOutAlt /></button>
             </>
           ) : (
-            <Link to="/login">Login</Link>
+            <NavLink to="/login">Login</NavLink>
           )}
         </div>
       </nav>
