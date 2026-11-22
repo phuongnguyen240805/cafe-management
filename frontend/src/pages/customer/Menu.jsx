@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import API from '../../services/api';
 import { CartContext } from '../../context/CartContext';
@@ -7,8 +7,9 @@ import formatCurrencyPHP from '../../utils/currency';
 
 const Menu = () => {
   const { addToCart } = useContext(CartContext);
+  const [search, setSearch] = useState('');
 
-  const { data: products = [], isLoading, error } = useQuery({
+  const { data: products = [], isLoading, error, refetch } = useQuery({
     queryKey: ['products'],
     queryFn: async () => {
       const res = await API.get('/products');
@@ -17,10 +18,7 @@ const Menu = () => {
     staleTime: 1000 * 60 * 5, // 5 minutes
   });
 
-  // Show error toast if query fails
-  if (error) {
-    toast.error('Failed to load menu');
-  }
+  const visibleProducts = products.filter(product => `${product.name} ${product.description || ''}`.toLowerCase().includes(search.toLowerCase().trim()));
 
   const handleAddToCart = (product) => {
     const added = addToCart(product);
@@ -35,9 +33,8 @@ const Menu = () => {
     return (
       <div className="menu-container">
         <h1>Our Menu</h1>
-        <div style={{ textAlign: 'center', padding: '40px', color: 'rgba(255,255,255,0.6)' }}>
-          Loading menu...
-        </div>
+        <p role="status">Preparing the menu…</p>
+        <div className="product-grid" aria-hidden="true">{[1,2,3].map(n => <div key={n} className="menu-skeleton" />)}</div>
       </div>
     );
   }
@@ -160,8 +157,10 @@ const Menu = () => {
       <div className="menu-container">
         <div className="menu-content">
           <h1>Our Menu</h1>
+        <div className="menu-tools"><input type="search" aria-label="Search menu" placeholder="Find your favorite coffee or treat…" value={search} onChange={e => setSearch(e.target.value)} /><p role="status">{visibleProducts.length} items</p></div>
+        {error ? <div className="menu-feedback" role="alert"><p>We couldn't load the menu. Please try again.</p><button className="btn-primary" onClick={() => refetch()}>Try again</button></div> : visibleProducts.length === 0 ? <div className="menu-feedback"><p>{search ? 'No matches. Try another name.' : 'The menu is being prepared. Please check back soon.'}</p>{search && <button className="btn-primary" onClick={() => setSearch('')}>Clear search</button>}</div> : null}
         <div className="product-grid">
-          {products.map((product) => {
+          {visibleProducts.map((product) => {
             const stock = product.stock ?? product.inventory ?? product.quantity_available ?? null;
             const outOfStock = stock != null ? stock <= 0 : product.status === 'out_of_stock';
             return (
