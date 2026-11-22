@@ -4,6 +4,7 @@ import App from './App.jsx'
 import './index.css'
 // Global theme variables
 import './styles/theme.css'
+import './styles/experience.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
