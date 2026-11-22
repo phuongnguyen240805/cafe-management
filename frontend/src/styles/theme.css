@@ -1,13 +1,13 @@
 /* Global theme variables for Leaxie */
 :root{
-  --bg-900: #071826; /* deep teal */
-  --bg-800: #093b4a;
+  --bg-900: #201610; /* espresso */
+  --bg-800: #38271d;
   --panel: #f5ead6; /* beige panel */
   --panel-contrast: #fff3ea;
   --text-dark: #2b1e18; /* readable on beige */
   --text-muted: rgba(43,30,24,0.6);
-  --accent-warm: #8b5e3c; /* button */
-  --accent-warm-2: #a06a46;
+  --accent-warm: #765035;
+  --accent-warm-2: #94633e;
   --brand-light: #ffd8cc;
   --focus-ring: rgba(139,94,60,0.18);
   --glass: rgba(255,255,255,0.03);
@@ -65,3 +65,16 @@ body{
 input, select, textarea {
   color: #111827;
 }
+
+/* Shared interaction and readability foundation. */
+:root { --leaxie-accent: #e8c997; --leaxie-accent-strong: #f4dcb5; }
+html { scroll-padding-top: 96px; }
+button, input, select, textarea { font: inherit; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+button:not(:disabled), a { touch-action: manipulation; }
+button:disabled { cursor: not-allowed; opacity: .55; }
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid #d9aa69; outline-offset: 4px;
+}
+input, select, textarea { accent-color: #94633e; }
+::selection { background: #d9aa69; color: #201610; }
